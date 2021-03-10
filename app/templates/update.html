@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h4>My Info:</h4>
+    <form action="" method="POST">
+
+    <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{ current_user.username }}</li>
+            <li class="list-group-item">{{ current_user.email }}</li>
+            <li class="list-group-item">{{ current_user.phone }}</li>
+    <h4>Have changes to make?:</h4>
+
+    <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{ current_user.username }}</li>
+            <li class="list-group-item">{{ current_user.email }}</li>
+            <li class="list-group-item">{{ current_user.phone }}</li>
+    
+    
+    <div class="form-group"></div>
+        <fieldset>
+            {{ form.username.label }}
+            {{ form.username(class="form-control", placeholder="Username") }}
+        </fieldset>
+        <fieldset>
+            {{ form.email.label }}
+            {{ form.email(class="form-control", placeholder="Email") }}
+        </fieldset>
+        <fieldset>
+            {{ form.phone.label }}
+            {{ form.phone(class="form-control", placeholder="Phone") }}
+        </fieldset>
+        <fieldset>
+            {{ form.password.label }}
+            {{ form.password(class="form-control", placeholder="Password") }}
+        </fieldset>
+        <fieldset>
+            {{ form.confirm_pass.label }}
+            {{ form.confirm_pass(class="form-control", placeholder="Confirm Password") }}
+        </fieldset>
+        {{ form.submit(class="btn btn-success") }}
+        !-- Delete Button -->
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Post</button>
+          
+          <!-- Modal -->
+          <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deleteModalLabel">Delete Post - Are You Sure?</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  This action cannot be reversed. Are you sure you want to delete?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <form action="{{ url_for('post_delete', post_id=post.id) }}" method="POST">
+                      <input type="submit" value="Delete" class="btn btn-danger">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        {% endblock content %}
+
+
+
+
+    </div>
+</form>
+
+
+
+
+
+
+
+
+{% endblock content %}
